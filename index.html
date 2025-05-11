@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>Калькулятор оконной фурнитуры</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Калькулятор оконной фурнитуры</h1>
+            <p class="subtitle">Выберите размер створки для подбора фурнитуры Accado</p>
+        </header>
+
+        <main class="main-content">
+            <section class="systems-section">
+                <div class="systems-buttons">
+                    <button class="system-btn active" data-system="accado">Accado</button>
+                </div>
+            </section>
+            
+            <section class="cards-section">
+                <div class="cards-container"></div>
+            </section>
+            
+            <section class="calculate-section">
+                <div class="calculate-container">
+                    <button id="calculate-btn">Рассчитать фурнитуру</button>
+                </div>
+            </section>
+            
+            <section class="results-section">
+                <div class="acc__result" aria-hidden="true"></div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>© 2024 Калькулятор оконной фурнитуры</p>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
