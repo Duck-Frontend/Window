@@ -27,9 +27,9 @@ const allAccessories = {
         },
         // Доп. комплектующие (по количеству приводов)
         "dop": {
-            "верхняя_петля": { article: "10014.0013.0.2", count: 0 },
-            "нижний_шпингалет": { article: "10003.0950.0.2", count: 0 },
-            "угловая_передача": { article: "10004.0000.0.2", count: 0 }
+            "петля": { article: "10014.0013.0.2", count: 0 },
+            "шпингалет": { article: "10003.0950.0.2", count: 0 },
+            "угол": { article: "10004.0000.0.2", count: 0 }
         }
     },
     "roto": {},
@@ -129,6 +129,7 @@ document.getElementById('calculate-btn').addEventListener('click', () => {
     
     // Считаем приводы и добавляем соответствующие клюшки
     let privodCount = 0;
+    let nozhnicyCount = 0;
     const privodToKlyushka = {
         "700-1200": "550",
         "900-1450": "750",
@@ -141,7 +142,7 @@ document.getElementById('calculate-btn').addEventListener('click', () => {
         system.klyushka[key].count = 0;
     });
     
-    // Добавляем клюшки в зависимости от приводов
+    // Считаем количество приводов и ножниц
     Object.entries(system.privod).forEach(([key, item]) => {
         privodCount += item.count;
         if (privodToKlyushka[key] && item.count > 0) {
@@ -149,10 +150,14 @@ document.getElementById('calculate-btn').addEventListener('click', () => {
         }
     });
     
-    // Автоматически добавляем доп. комплектующие по количеству приводов
-    system.dop["верхняя_петля"].count = privodCount;
-    system.dop["нижний_шпингалет"].count = privodCount;
-    system.dop["угловая_передача"].count = privodCount;
+    Object.values(system.nozhnicy).forEach(item => {
+        nozhnicyCount += item.count;
+    });
+    
+    // Автоматически добавляем доп. комплектующие
+    system.dop["петля"].count = nozhnicyCount;
+    system.dop["шпингалет"].count = privodCount;
+    system.dop["угол"].count = privodCount;
     
     // Формируем вывод
     ["privod", "nozhnicy", "klyushka", "dop"].forEach(category => {
